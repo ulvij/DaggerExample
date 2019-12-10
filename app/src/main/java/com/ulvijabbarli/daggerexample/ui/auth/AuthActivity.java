@@ -1,5 +1,6 @@
 package com.ulvijabbarli.daggerexample.ui.auth;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,6 +18,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.bumptech.glide.RequestManager;
 import com.ulvijabbarli.daggerexample.R;
 import com.ulvijabbarli.daggerexample.models.User;
+import com.ulvijabbarli.daggerexample.ui.main.MainActivity;
 import com.ulvijabbarli.daggerexample.viewmodels.ViewModelProviderFactory;
 
 import javax.inject.Inject;
@@ -54,7 +56,7 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
     }
 
     private void subscribeObservers() {
-        authViewModel.observeUser().observe(this, new Observer<AuthResource<User>>() {
+        authViewModel.observeAuthState().observe(this, new Observer<AuthResource<User>>() {
             @Override
             public void onChanged(AuthResource<User> userAuthResource) {
                 if (userAuthResource!=null){
@@ -65,6 +67,7 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
                             break;
                         case AUTHENTICATED:
                             showProgressBar(false);
+                            onLoginSuccess();
                             Log.d(TAG, "onChanged: LOGIN SUCCESS: "+userAuthResource.data.getEmail());
                             break;
                         case ERROR:
@@ -86,6 +89,12 @@ public class AuthActivity extends DaggerAppCompatActivity implements View.OnClic
         }else{
             progressBar.setVisibility(View.GONE);
         }
+    }
+
+    private void onLoginSuccess(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void setLogo() {

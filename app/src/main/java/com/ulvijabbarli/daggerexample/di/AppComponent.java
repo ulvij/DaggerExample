@@ -24,7 +24,7 @@ public interface AppComponent extends AndroidInjector<BaseApplication> {
     SessionManager sessionManager();
 
     @Component.Builder
-    interface Builder{
+    interface Builder {
 
         @BindsInstance
         Builder application(Application application);
