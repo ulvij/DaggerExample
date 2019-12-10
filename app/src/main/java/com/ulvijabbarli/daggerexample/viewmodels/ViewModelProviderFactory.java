@@ -23,7 +23,7 @@ public class ViewModelProviderFactory implements ViewModelProvider.Factory {
     @Override
     public <T extends ViewModel> T create(Class<T> modelClass) {
         Provider<? extends ViewModel> creator = creators.get(modelClass);
-        if (creator == null) { // if the viewmodel has not been created
+        if (creator == null) { // if the viewModel has not been created
 
             // loop through the allowable keys (aka allowed classes with the @ViewModelKey)
             for (Map.Entry<Class<? extends ViewModel>, Provider<ViewModel>> entry : creators.entrySet()) {

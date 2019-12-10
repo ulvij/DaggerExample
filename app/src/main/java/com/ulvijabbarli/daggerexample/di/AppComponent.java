@@ -3,6 +3,7 @@ package com.ulvijabbarli.daggerexample.di;
 import android.app.Application;
 
 import com.ulvijabbarli.daggerexample.BaseApplication;
+import com.ulvijabbarli.daggerexample.SessionManager;
 
 import javax.inject.Singleton;
 
@@ -19,6 +20,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
         ViewModelFactoryModule.class
 })
 public interface AppComponent extends AndroidInjector<BaseApplication> {
+
+    SessionManager sessionManager();
 
     @Component.Builder
     interface Builder{
