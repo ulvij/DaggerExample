@@ -17,8 +17,8 @@ public class SessionManager {
 
     private static final String TAG = "SessionManager";
 
+    // data
     private MediatorLiveData<AuthResource<User>> cachedUser = new MediatorLiveData<>();
-
 
     @Inject
     public SessionManager(){

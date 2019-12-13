@@ -28,9 +28,7 @@ public abstract class BaseActivity extends DaggerAppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         subscribeObservers();
-
     }
-
 
     private void subscribeObservers(){
         sessionManager.getAuthUser().observe(this, new Observer<AuthResource<User>>() {
@@ -38,7 +36,6 @@ public abstract class BaseActivity extends DaggerAppCompatActivity {
             public void onChanged(AuthResource<User> userAuthResource) {
                 if (userAuthResource!=null){
                     switch (userAuthResource.status){
-
                         case LOADING:
                             break;
                         case AUTHENTICATED:
