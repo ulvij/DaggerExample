@@ -29,7 +29,7 @@ public class PostsViewModel extends ViewModel {
     private final SessionManager sessionManager;
     private final MainApi mainApi;
 
-    private MediatorLiveData<Resource<List<Post>>> posts;
+        private MediatorLiveData<Resource<List<Post>>> posts;
 
     @Inject
     public PostsViewModel(SessionManager sessionManager, MainApi mainApi) {

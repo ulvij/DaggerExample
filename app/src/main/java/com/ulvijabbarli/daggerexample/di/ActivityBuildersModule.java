@@ -14,7 +14,7 @@ import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
 @Module
-public abstract class ActivityBuildersModule {
+abstract class ActivityBuildersModule {
 
     @AuthScope
     @ContributesAndroidInjector(modules = {AuthViewModelsModule.class, AuthModule.class})

@@ -22,5 +22,4 @@ public class MainModule {
         return retrofit.create(MainApi.class);
     }
 
-
 }

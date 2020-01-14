@@ -5,7 +5,6 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.LiveDataReactiveStreams;
 import androidx.lifecycle.MediatorLiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 
 import com.ulvijabbarli.daggerexample.SessionManager;
@@ -23,9 +22,10 @@ public class AuthViewModel extends ViewModel {
     private final AuthApi authApi;
 
     private MediatorLiveData<AuthResource<User>> authUser = new MediatorLiveData<>();
-        private SessionManager sessionManager;
+    private SessionManager sessionManager;
+
     @Inject
-    public AuthViewModel(AuthApi authApi,SessionManager sessionManager) {
+    public AuthViewModel(AuthApi authApi, SessionManager sessionManager) {
         this.authApi = authApi;
         this.sessionManager = sessionManager;
         Log.d(TAG, "AuthViewModel: view model is working");
@@ -35,8 +35,8 @@ public class AuthViewModel extends ViewModel {
         Log.d(TAG, "authenticateWithId: attepmting to login");
         sessionManager.authenticateWithId(queryUserId(userId));
     }
-    
-    private LiveData<AuthResource<User>> queryUserId(int userId){
+
+    private LiveData<AuthResource<User>> queryUserId(int userId) {
         return LiveDataReactiveStreams.fromPublisher(
                 authApi.getUser(userId)
                         .onErrorReturn(new Function<Throwable, User>() {

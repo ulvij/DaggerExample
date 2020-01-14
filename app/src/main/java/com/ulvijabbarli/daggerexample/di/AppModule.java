@@ -22,7 +22,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class AppModule {
 
-
     @Singleton
     @Provides
     static Retrofit provideRetrofitInstance(){
@@ -32,8 +31,6 @@ public class AppModule {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
     }
-
-
 
     @Singleton
     @Provides
@@ -55,6 +52,5 @@ public class AppModule {
     static Drawable provideAppDrawable(Application application){
         return ContextCompat.getDrawable(application,R.drawable.logo);
     }
-
 
 }
